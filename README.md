@@ -1,80 +1,107 @@
 # Kritik reklam
 
-Balík pravidel, který z ChatGPT nebo Claude udělá přísného kritika reklam a kampaní. Od PLACEMENT.cz.
+Pravidla, která z ChatGPT nebo Claude udělají přísného kritika vašich reklam. Od PLACEMENT.cz.
 
-V reelu stačí jedno nastavení. Tady je celek: krátký text do nastavení a skill, který reklamu projde celý.
-
-AI vám řekne, co na reklamě nefunguje. Když nemá data, napíše, že neví. Čísla si nevymýšlí. V účtu se nic nezmění, dokud to neschválíte.
+AI má sklon všechno chválit. S těmito pravidly vám místo chvály řekne, proč by reklama neprodala, dá jednu opravenou verzi a čísla si nevymýšlí. Hodí se na reklamy v Google Ads, Skliku i na Facebooku a Instagramu (Meta), hlavně pro e-shopy a služby.
 
 ## Co v balíku je
 
-- `chatgpt-claude-pokyny.txt`, text do nastavení ChatGPT i Claude. Má 704 znaků. Vejde se do limitu ChatGPT: 1 500 znaků u tarifů Free a Go, 5 000 znaků u tarifů Plus, Pro, Business, Enterprise a Education. U Claude oficiální limit znaků u osobních instrukcí zveřejněný není, tento text je krátký a lze ho vložit stejně.
-- `kritik-reklam/SKILL.md`, skill pro hodnocení reklamy. Projde háček, nabídku, důkaz, námitky, výzvu k akci, soulad se stránkou, rizika pravidel Google, Skliku a Mety, délku, češtinu a text v obrázku. Vrátí verdikt, tři největší problémy a jednu opravenou verzi.
-- `kritik-reklam.zip`, stejný skill zabalený k nahrání do Claude.
-- `LICENSE`, licence MIT.
+- `chatgpt-claude-pokyny.txt`: text, který vložíte jednou do nastavení. Funguje v ChatGPT i v Claude, i v bezplatné verzi.
+- `kritik-reklam/SKILL.md`: podrobný kontrolní seznam (skill) pro Claude. Reklamu projde bod po bodu.
+- `kritik-reklam.zip`: stejný skill zabalený k nahrání do Claude.
+- `LICENSE`: licence MIT. Můžete to volně používat i upravovat.
 
-## Stažení
-
-Celá složka jako ZIP (až bude repo veřejné):
+Stažení všeho najednou: na stránce repozitáře klikněte na zelené tlačítko Code a pak Download ZIP. Nebo přímo:
 
 https://github.com/placementppc/kritik-reklam/archive/refs/heads/main.zip
 
-Na stránce repozitáře to samé uděláte přes Code a pak Download ZIP:
+## Jedna věta z videa
 
-https://github.com/placementppc/kritik-reklam
+Když chcete jen to nejnutnější, vložte do nastavení tuhle větu:
 
-## 1. Text do nastavení
+> Když ti dám reklamu, buď přísný kritik: nechval mě, napiš tři největší problémy a jednu opravenou verzi a čísla si nikdy nevymýšlej.
 
-Vložte obsah souboru `chatgpt-claude-pokyny.txt`.
+Celý text v souboru `chatgpt-claude-pokyny.txt` dělá totéž důkladněji. Doporučuji vložit celý.
 
-ChatGPT, počítač: Nastavení, Personalizace, zapněte přizpůsobení a vložte text do pole Vlastní pokyny (v anglické verzi Settings, Personalization, Custom Instructions). Uložte.
+## ChatGPT za 2 minuty
 
-ChatGPT, telefon: Nastavení, Přizpůsobit ChatGPT, stejné pole.
+1. Otevřete soubor `chatgpt-claude-pokyny.txt` a zkopírujte celý text.
+2. Na počítači: Nastavení, Personalizace. Na telefonu: Nastavení, Přizpůsobit ChatGPT. V anglické verzi Settings, Personalization nebo Customize ChatGPT.
+3. Zapněte přizpůsobení (Enable customization).
+4. Text vložte do pole Vlastní pokyny (Custom Instructions) a uložte.
 
-Claude: klikněte na iniciály vlevo dole, Nastavení, Váš Claude (v starší verzi Účet) a vložte text do pole Instrukce (dříve také Instrukce pro Claude). V anglické verzi je to Settings, Your Claude, Instructions. Názvy v češtině se můžou podle verze lišit, rozhoduje pole s instrukcemi, které platí pro všechny rozhovory.
+Funguje to i v bezplatné verzi ChatGPT. Text se vejde i do nejmenšího limitu, který ChatGPT u vlastních pokynů má. Když už v poli máte jiné pokyny, přidejte tyhle na konec.
 
-Text vložte jednou. Platí pro další rozhovory. Když už v tom poli máte jiné pokyny, přidejte tyhle za ně a zkontrolujte, že se do limitu stále vejdete.
+Chcete v ChatGPT i podrobný kontrolní seznam? Otevřete soubor `kritik-reklam/SKILL.md`, zkopírujte jeho text do chatu a napište: Řiď se tímto postupem a zhodnoť tuhle reklamu.
 
-## 2. Jak nahrát skill do Claude
+## Claude za 2 minuty
 
-Skill je navíc k nastavení. Použijte ho, když chcete reklamu projít celým kontrolním seznamem.
+1. Zkopírujte celý text ze souboru `chatgpt-claude-pokyny.txt`.
+2. V Claude klikněte vlevo dole na svoje iniciály, pak Nastavení a Váš Claude (ve starším rozložení Účet). Anglicky Settings, Your Claude.
+3. Text vložte do pole Instrukce (ve starším rozložení Instrukce pro Claude) a uložte.
 
-Nejdřív v Claude zapněte tvorbu souborů. U tarifů Free, Pro, Max a Ultra: Nastavení, Funkce (Capabilities) a zapněte položku Spouštění kódu a tvorba souborů, v novějším rozložení může být jako Vytvářet a upravovat soubory. Bez toho skill nepůjde použít.
+Instrukce platí pro všechny rozhovory.
 
-Pak:
+## Skill pro Claude, podrobný rozbor
 
-1. Stáhněte z tohoto repozitáře soubor `kritik-reklam.zip`. Když skládáte ZIP sami, zabalte celou složku `kritik-reklam`, ne jen soubor uvnitř. V archivu musí být cesta `kritik-reklam/SKILL.md`.
-2. V Claude otevřete Přizpůsobit a Skills (Customize, Skills).
-3. Klepněte na plus, Vytvořit skill, Nahrát skill (Upload a skill).
-4. Vyberte `kritik-reklam.zip`.
+Skill je navíc. Hodí se, když chcete projít reklamu celým kontrolním seznamem.
+
+1. V Claude zapněte v Nastavení, Funkce (Capabilities) položku Spouštění kódu a tvorba souborů. V novějším rozložení se jmenuje Vytvářet a upravovat soubory. Bez ní skill nefunguje.
+2. Stáhněte soubor `kritik-reklam.zip`. Nerozbalujte ho.
+3. Otevřete Přizpůsobit, Skills (Customize, Skills).
+4. Klikněte na plus, Vytvořit skill a Nahrát skill (Upload a skill). Vyberte `kritik-reklam.zip`.
 5. Skill v seznamu zapněte.
 
-Ověření: v novém rozhovoru napište „Zhodnoť tuhle reklamu jako přísný kritik“ a vložte text reklamy. V přemýšlení Claude by mělo být vidět, že skill načetl. Když ho nenačte, skill v seznamu znovu zapněte a zadání zopakujte.
+Vyzkoušení: v novém rozhovoru napište "Zhodnoť tuhle reklamu" a vložte text reklamy, ideálně i odkaz na stránku, kam vede.
 
-Skill funguje na tarifech Free, Pro, Max, Ultra, Team i Enterprise, pokud je zapnutá tvorba souborů. Na firemním tarifu může nahrávání skillů vypnout správce.
+Skills fungují na tarifech Free, Pro, Max, Ultra, Team i Enterprise. Ve firmě je může vypnout správce. Když skill nahrát nejde, vytvořte v Claude projekt, vložte text ze `SKILL.md` do instrukcí projektu a reklamy hodnoťte v něm.
 
-Když nemůžete skill nahrát, otevřete v Claude projekt, přiložte soubor `kritik-reklam/SKILL.md` a napište: Řiď se souborem SKILL.md a zhodnoť tuhle reklamu.
+## Co dát AI, aby byl rozbor dobrý
 
-## 3. ChatGPT bez skillu
+- Text reklamy, obrázek nebo video.
+- Kde poběží: Google vyhledávání, Sklik, Meta feed, Stories nebo Reels.
+- Odkaz nebo text stránky, kam reklama vede.
+- Pro koho je: noví lidé, nebo ti, kdo už u vás byli.
+- Když máte, skutečná čísla z účtu.
 
-ChatGPT nemá stejné nahrávání skillů jako Claude. Vložte proto text z `chatgpt-claude-pokyny.txt` do vlastních pokynů. Když chcete celý kontrolní seznam, přiložte do projektu nebo do chatu soubor `kritik-reklam/SKILL.md` a napište: Řiď se souborem SKILL.md a zhodnoť tuhle reklamu.
+Co nedodáte, AI nedomýšlí. Napíše, že to posoudit nešlo.
+
+## Ukázka před a po
+
+Reklama e-shopu s kávovary na Facebooku:
+
+> Nejlepší kávovary za super ceny! Kvalita, které věříte. Nakupte teď!
+
+Bez pravidel AI často odpoví nějak takto:
+
+> Skvělá, úderná reklama! Text je krátký a výzva k akci jasná. Možná bych přidal emoji, aby víc zaujala.
+
+S pravidly vypadá odpověď takto (zkráceno):
+
+> **Verdikt:** Upravit. Reklama neříká, jaký kávovar prodává, komu a proč koupit právě u vás.
+>
+> **Tři největší problémy:**
+> 1. "Nejlepší" a "super ceny" nic neříkají a nejsou doložené. Člověk je přejede. Napište konkrétní produkt nebo výhodu.
+> 2. Chybí důkaz a odpověď na námitky. Neznámému e-shopu lidé nevěří. Doplňte recenze, dopravu nebo vrácení, pokud je opravdu máte.
+> 3. "Nakupte teď" bez důvodu. Řekněte, co člověk po kliknutí najde.
+>
+> **Opravená verze:** Pákové kávovary pro domácí espresso. [doplňte skutečný údaj o dopravě nebo vrácení]. Vyberte si svůj.
+>
+> **Co ověřit daty:** proklikovost a nákupy proti původní verzi. Jestli lidé po kliknutí neodcházejí hned ze stránky.
+
+Ukázka je ilustrační. Skutečná odpověď se liší podle modelu a podle toho, co AI dáte. Všimněte si, že číslo ani recenzi si nevymyslela. Nechala místo, kam doplníte skutečný údaj.
 
 ## Než začnete
 
-- Čísla a výsledky si skill ani pokyny nevymýšlejí. Když chcete hodnotit výkon, musíte dodat skutečná data.
-- Posudek k pravidlům Google, Skliku a Mety je upozornění na rizika, ne právní rada a ne rozhodnutí schvalování.
-- Pravidla inzerce se mění. Ověřujte je v oficiální nápovědě.
+- Pokyny ani skill nic nemění ve vašem reklamním účtu. Jen radí.
+- Výkon reklamy AI hodnotí jen ze skutečných dat, která jí dáte.
+- Upozornění na pravidla Google, Skliku a Mety je jen upozornění na riziko, ne právní rada. Pravidla se mění, ověřujte je v oficiální nápovědě.
+- I přísnou AI berte jako druhý názor. Rozhodnutí je vaše.
 
 ## Poradna zdarma
 
-Když budete chtít probrat svoje reklamy s člověkem, jste zvaní do Poradny zdarma:
+Chcete svoje reklamy probrat s člověkem? Jste zvaní do Poradny zdarma:
 
 https://vzdelavani.placement.cz/poradna
 
-## Autor
-
-Jakub Herrmann, PLACEMENT.cz
-
-https://www.linkedin.com/in/jakubherrmann/
-
-Licence MIT. Verze 1, 25. 11. 2026.
+Jakub Herrmann, PLACEMENT.cz. Licence MIT. Verze 2, 25. 11. 2026.
